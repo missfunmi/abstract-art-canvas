@@ -30,4 +30,4 @@ pnpm install
 ```bash
 pnpm run dev
 ```
-Then open http://localhost:3121/ in a browser
+Then open http://localhost:5173/ in a browser
