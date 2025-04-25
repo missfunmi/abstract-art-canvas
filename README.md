@@ -13,3 +13,17 @@ You, too, can be an abstract artist for a day! Use your mouse to recreate famous
 |👉| Mark Rothko | [Orange and Yellow](https://www.wikiart.org/en/mark-rothko/orange-and-yellow) | 1956 | Color Field Painting | Hover or tap reveals subtle color transitions; fade between emotions with soft transitions | tbd | tbd |
 |⏳| Ellsworth Kelly | [Colors for a Large Wall](https://www.wikiart.org/en/ellsworth-kelly/colors-for-a-large-wall-1951) | 1951 | Hard-Edge Abstraction | Shuffle tiles; drag-and-drop to experiment with new arrangements. | tbd | tbd |
 |⏳| Wassily Kandinsky | [Composition VIII](https://www.wikiart.org/en/wassily-kandinsky/composition-viii-1923) | 1923 | Abstract / Geometric Art | User clicks to add shapes and lines that play tonesâ€ | tbd | tbd |
+
+
+# Running the app locally
+## First time install
+```bash
+brew install pnpm  # if needed
+pnpm install
+```
+
+## To run the app,
+```bash
+pnpm run dev
+```
+Then open http://localhost:3121/ in a browser

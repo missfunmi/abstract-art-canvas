@@ -1,12 +1,13 @@
 // Source image: https://www.piet-mondrian.org/composition-ii-in-red-blue-and-yellow.jsp
 
 import p5 from "p5";
+import { getCanvasSize } from "../utils/canvas-utilities";
 
 export function createSketch() {
   let mondrianBlack;
   let mondrianWhite;
 
-  let canvasSize = 400;
+  let canvasSize;
   let gridSize = 10;
   let lineThickness = 10;
 
@@ -14,15 +15,8 @@ export function createSketch() {
     start: number;
     thickness: number;
   };
-  let verticalLineXPositions: Line[] = [
-    { start: canvasSize / (gridSize / 2), thickness: lineThickness },
-    { start: (9 * canvasSize) / gridSize, thickness: lineThickness },
-  ];
-  let horizontalLineYPositions: Line[] = [
-    { start: (3 * canvasSize) / gridSize, thickness: 2 * lineThickness },
-    { start: (7 * canvasSize) / gridSize, thickness: lineThickness },
-    { start: (17 * canvasSize) / (2 * gridSize), thickness: 2 * lineThickness },
-  ];
+  let verticalLineXPositions: Line[] = [];
+  let horizontalLineYPositions: Line[] = [];
 
   type Rect = {
     startX: number;
@@ -41,6 +35,7 @@ export function createSketch() {
     p5.preload = function () {};
 
     p5.setup = function () {
+      canvasSize = getCanvasSize();
       p5.createCanvas(canvasSize, canvasSize);
 
       mondrianBlack = p5.color("#0c1810");
@@ -123,57 +118,83 @@ export function createSketch() {
     };
 
     const initRects = function (): any[] {
+      verticalLineXPositions = [
+        { start: canvasSize / (gridSize / 2), thickness: lineThickness },
+        { start: (9 * canvasSize) / gridSize, thickness: lineThickness },
+      ];
+      horizontalLineYPositions = [
+        { start: (3 * canvasSize) / gridSize, thickness: 2 * lineThickness },
+        { start: (7 * canvasSize) / gridSize, thickness: lineThickness },
+        {
+          start: (17 * canvasSize) / (2 * gridSize),
+          thickness: 2 * lineThickness,
+        },
+      ];
       let redRect: Rect = {
-        startX: verticalLineXPositions[0].start +
+        startX:
+          verticalLineXPositions[0].start +
           verticalLineXPositions[0].thickness / 2,
         startY: 0,
-        width: canvasSize -
+        width:
+          canvasSize -
           verticalLineXPositions[0].start -
           verticalLineXPositions[0].thickness / 2,
-        height: horizontalLineYPositions[1].start -
+        height:
+          horizontalLineYPositions[1].start -
           horizontalLineYPositions[1].thickness / 2,
         color: p5.color("#d04035"),
       };
       let blueRect: Rect = {
         startX: 0,
-        startY: horizontalLineYPositions[1].start +
+        startY:
+          horizontalLineYPositions[1].start +
           horizontalLineYPositions[1].thickness / 2,
-        width: verticalLineXPositions[0].start -
+        width:
+          verticalLineXPositions[0].start -
           verticalLineXPositions[0].thickness / 2,
-        height: canvasSize -
+        height:
+          canvasSize -
           horizontalLineYPositions[1].start -
           horizontalLineYPositions[1].thickness / 2,
         color: p5.color("#265c9b"),
       };
       let yellowRect: Rect = {
-        startX: verticalLineXPositions[1].start +
+        startX:
+          verticalLineXPositions[1].start +
           verticalLineXPositions[1].thickness / 2,
-        startY: horizontalLineYPositions[2].start +
+        startY:
+          horizontalLineYPositions[2].start +
           horizontalLineYPositions[2].thickness / 2,
-        width: canvasSize -
+        width:
+          canvasSize -
           verticalLineXPositions[1].start -
           verticalLineXPositions[1].thickness / 2,
-        height: canvasSize -
+        height:
+          canvasSize -
           horizontalLineYPositions[2].start -
           horizontalLineYPositions[2].thickness / 2,
         color: p5.color("#eadc80"),
       };
       let whiteRect: Rect = {
-        startX: verticalLineXPositions[0].start +
+        startX:
+          verticalLineXPositions[0].start +
           verticalLineXPositions[0].thickness / 2,
-        startY: horizontalLineYPositions[1].start +
+        startY:
+          horizontalLineYPositions[1].start +
           horizontalLineYPositions[1].thickness / 2,
-        width: verticalLineXPositions[1].start -
+        width:
+          verticalLineXPositions[1].start -
           verticalLineXPositions[1].thickness / 2 -
           verticalLineXPositions[0].start -
           verticalLineXPositions[0].thickness / 2,
-        height: canvasSize -
+        height:
+          canvasSize -
           horizontalLineYPositions[1].start -
           horizontalLineYPositions[1].thickness / 2,
         color: mondrianWhite,
       };
 
       return [redRect, blueRect, yellowRect, whiteRect];
-    }
+    };
   };
 }

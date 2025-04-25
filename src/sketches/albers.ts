@@ -1,6 +1,7 @@
 // Source image: https://www.incollect.com/listings/fine-art/prints/josef-albers-original-homage-to-the-square-serigraphs-by-josef-albers-417718
 
 import p5 from "p5";
+import { getCanvasSize } from "../utils/canvas-utilities";
 
 /**
  *  ----------------------------
@@ -17,9 +18,9 @@ import p5 from "p5";
  *  ----------------------------
  */
 export function createSketch() {
-  let canvasSize = 400;
+  let canvasSize;
   let gridSize = 10;
-  let yOffset = 60;
+  let yOffset = 80;
 
   type Square = {
     startX: number;
@@ -43,11 +44,11 @@ export function createSketch() {
     p5.preload = function () {};
 
     p5.setup = function () {
+      canvasSize = getCanvasSize();
       p5.createCanvas(canvasSize, canvasSize);
 
       allColorSets = initColorSets();
       activeColorSet = p5.random(allColorSets);
-
       p5.background(activeColorSet[0].color);
     };
 
@@ -177,7 +178,7 @@ export function createSketch() {
     };
 
     p5.mouseDragged = function () {
-      p5.stroke(activeSquare.color);
+      if (activeSquare) p5.stroke(activeSquare.color);
       p5.line(p5.pmouseX, p5.pmouseY, p5.mouseX, p5.mouseY);
 
       dragPath.push({

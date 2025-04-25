@@ -1,31 +1,13 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Root elements - allow scrolling now */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: auto; /* Keep browser scrolling enabled */
-  background-color: #352F29; /* Off-black background color */
-  color: #f5f5f5; /* Lighter text color for better contrast with dark background */
-}
-
-/* Make p5-root a simple full-width container */
-#p5-root {
+#p5-container {
   width: 100%;
   padding: 0;
   overflow: visible;
 }
 
-/* Create a new container specifically for the canvas */
-.canvas-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-}
-
-/* Canvas styling */
 .p5Canvas {
   display: block !important;
   position: relative !important;
