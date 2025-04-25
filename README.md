@@ -1,9 +1,13 @@
 # (Famous) Abstract Art Canvas 🧑‍🎨
-
 <a href='https://www.recurse.com/scout/click?t=c7bc9ba4cb3e6725e05e413f16f8c5a3' title='Made with love at the Recurse Center'><img src='https://cloud.githubusercontent.com/assets/2883345/11325206/336ea5f4-9150-11e5-9e90-d86ad31993d8.png' height='20px'/></a>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2fa22975-7994-4851-9049-bd026a72ef4b/deploy-status)](https://app.netlify.com/sites/abstract-art-canvas/deploys)
 
 You, too, can be an abstract artist for a day! Use your mouse to recreate famous abstract artwork from the late 20th century.
 
+> ⏳ This project is a **Work in Progress**.
+
+---
 
 ## Art pieces in the gallery
 | | Artist | Artwork | Year | Paint Style | User Interaction | p5js.org | codepen.io |
