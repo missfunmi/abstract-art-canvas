@@ -2,15 +2,19 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import Terminal from "vite-plugin-terminal";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     react(),
-    Terminal({
-      console: "terminal",
-      output: ["terminal", "console"],
-    }),
+    ...(command === "serve"
+      ? [
+          Terminal({
+            console: "terminal",
+            output: ["terminal", "console"],
+          }),
+        ]
+      : []),
   ],
   server: {
-    allowedHosts: [],
+    allowedHosts: ["a36eb3d78f21ed.lhr.life"],
   },
-});
+}));
