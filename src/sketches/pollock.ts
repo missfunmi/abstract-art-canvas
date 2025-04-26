@@ -1,7 +1,7 @@
 // Original inspiration: https://editor.p5js.org/kwertyops/sketches/V7RIjyVpd
 
 import p5 from "p5";
-import { getCanvasSize } from "../utils/canvas-utilities";
+import { CANVAS_SIZE } from "../constants";
 
 export function createSketch() {
   let brush = { fromX: 0, fromY: 0, toX: 0, toY: 0 };
@@ -11,7 +11,7 @@ export function createSketch() {
     p5.preload = function () {};
 
     p5.setup = function () {
-      let canvasSize = getCanvasSize();
+      let canvasSize = CANVAS_SIZE;
       colors = [
         p5.color("#70704A"),
         p5.color("#736A61"),

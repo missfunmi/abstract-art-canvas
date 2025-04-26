@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link href="/src/styles.css" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Abstract Art Canvas 👩‍🎨</title>
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-  </head>
-  <body class="bg-gray-50 text-gray-800 antialiased">
-    <div class="grid grid-flow-row auto-rows-max gap-6">
-      <div class="flex justify-center p-5">
-        <h1 class="text-3xl/7 font-bold text-gray-900">
-          Abstract Art Canvas 👩‍🎨
-        </h1>
-      </div>
-      <div class="flex justify-center p-5 gap-6">
-        <h2 class="text-2xl/7 text-gray-900">
-          You, too, can be an abstract artist for a day! Use your mouse to
-          recreate famous abstract artwork from the late 20th century
-        </h2>
-      </div>
-      <div id="root"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet" />
+  <link href="/src/styles.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abstract Art Canvas 👩‍🎨</title>
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+</head>
+
+<body class="relative bg-[#f8f5f0] text-gray-900 antialiased min-h-screen overflow-x-hidden">
+  <div class="gallery-wall">
+    <img src="/img/albers.jpg" class="art art-1" />
+    <img src="/img/mondrian.jpg" class="art art-2" />
+    <img src="/img/rothko.jpg" class="art art-3" />
+    <img src="/img/kelly.jpg" class="art art-4" />
+    <img src="/img/albers.jpg" class="art art-5" />
+    <img src="/img/mondrian.jpg" class="art art-6" />
+    <img src="/img/rothk.jpg" class="art art-7" />
+    <img src="/img/kelly.jpg" class="art art-8" />
+  </div>
+
+  <section class="relative z-10 mx-auto max-w-screen-xl px-6 pt-12 pb-24">
+    <div class="flex justify-center mb-6">
+      <h1 class="text-6xl md:text-8xl font-title font-bold text-gray-900 tracking-tight">
+        Abstract Art Canvas 👩‍🎨
+      </h1>
     </div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+    <div class="font-body flex justify-center max-w-9/10 text-2xl/7 text-gray-700 text-center">
+      You, too, can be a 20th century abstract artist for a day!
+    </div>
+    <div class="font-body flex justify-center max-w-9/10 text-2xl/7 text-gray-700 text-center">
+      Tap, click, or drag to recreate the famous artwork below in the canvas on the right.
+    </div>
+
+    <div id="root"></div>
+  </section>
+
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

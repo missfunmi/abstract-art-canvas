@@ -1,13 +1,13 @@
 // Source image: https://www.piet-mondrian.org/composition-ii-in-red-blue-and-yellow.jsp
 
 import p5 from "p5";
-import { getCanvasSize } from "../utils/canvas-utilities";
+import { CANVAS_SIZE } from "../constants";
 
 export function createSketch() {
   let mondrianBlack;
   let mondrianWhite;
 
-  let canvasSize;
+  let canvasSize = CANVAS_SIZE;
   let gridSize = 10;
   let lineThickness = 10;
 
@@ -35,13 +35,10 @@ export function createSketch() {
     p5.preload = function () {};
 
     p5.setup = function () {
-      canvasSize = getCanvasSize();
       p5.createCanvas(canvasSize, canvasSize);
-
       mondrianBlack = p5.color("#0c1810");
       mondrianWhite = p5.color("#e6e6e6");
       p5.background(mondrianWhite);
-
       coloredRects = initRects();
     };
 
