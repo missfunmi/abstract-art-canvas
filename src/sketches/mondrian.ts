@@ -32,8 +32,6 @@ export function createSketch() {
   let isDrawingHorizontal = false;
 
   return function sketch(p5: p5) {
-    p5.preload = function () {};
-
     p5.setup = function () {
       p5.createCanvas(canvasSize, canvasSize);
       mondrianBlack = p5.color("#0c1810");
@@ -42,9 +40,76 @@ export function createSketch() {
       coloredRects = initRects();
     };
 
-    p5.draw = function () {};
-
     p5.doubleClicked = function () {
+      fillColoredRects();
+      return false;
+    }
+
+    p5.mousePressed = function () {
+      if (!pen.isDrawing) {
+        pen.x = p5.mouseX;
+        pen.y = p5.mouseY;
+      }
+
+      pen.isDrawing = true;
+      if (pen.x <= 0 || pen.x >= canvasSize) {
+        isDrawingHorizontal = true;
+        isDrawingVertical = false;
+      } else if (pen.y <= 0 || pen.y >= canvasSize) {
+        isDrawingHorizontal = false;
+        isDrawingVertical = true;
+      }
+      return false;
+    };
+
+    p5.mouseReleased = function () {
+      // reset pen state when the mouse is released after dragging
+      pen = { x: -1, y: -1, isDrawing: false };
+    };
+
+    p5.mouseDragged = function () {
+      let prevX = p5.pmouseX;
+      let prevY = p5.pmouseY;
+      let currX = p5.mouseX;
+      let currY = p5.mouseY;
+      p5.stroke(mondrianBlack);
+      if (isDrawingHorizontal) {
+        const closest = horizontalLineYPositions.find(
+          (line) => p5.abs(line.start - pen.y) <= 50
+        );
+        if (closest) {
+          p5.strokeWeight(closest.thickness);
+          p5.line(prevX, closest.start, currX, closest.start);
+        }
+      } else if (isDrawingVertical) {
+        const closest = verticalLineXPositions.find(
+          (line) => p5.abs(line.start - pen.x) <= 80
+        );
+        if (closest) {
+          p5.strokeWeight(closest.thickness);
+          p5.line(closest.start, prevY, closest.start, currY);
+        }
+      }
+      return false;
+    };
+
+    p5.touchStarted = function() {
+      p5.mousePressed();
+      return false;
+    }
+
+    p5.touchMoved = function() {
+      p5.mouseDragged();
+      return false;
+    }
+
+    p5.touchEnded = function() {
+      p5.mouseReleased();
+      fillColoredRects();
+      return false;
+    }
+
+    const fillColoredRects = function () {
       let clickPoint = { x: p5.mouseX, y: p5.mouseY };
 
       coloredRects.forEach((coloredRect) => {
@@ -64,54 +129,6 @@ export function createSketch() {
           );
         }
       });
-
-      return false;
-    };
-
-    p5.mousePressed = function () {
-      if (!pen.isDrawing) {
-        pen.x = p5.mouseX;
-        pen.y = p5.mouseY;
-      }
-
-      pen.isDrawing = true;
-      if (pen.x <= 0) {
-        isDrawingHorizontal = true;
-        isDrawingVertical = false;
-      } else if (pen.y <= 0) {
-        isDrawingHorizontal = false;
-        isDrawingVertical = true;
-      }
-      return false;
-    };
-
-    p5.mouseReleased = function () {
-      // reset pen state when the mouse is released after dragging
-      pen = { x: -1, y: -1, isDrawing: false };
-    };
-
-    p5.mouseDragged = function () {
-      let currX = p5.mouseX;
-      let currY = p5.mouseY;
-      p5.stroke(mondrianBlack);
-      if (isDrawingHorizontal) {
-        const closest = horizontalLineYPositions.find(
-          (line) => p5.abs(line.start - pen.y) <= 50
-        );
-        if (closest) {
-          p5.strokeWeight(closest.thickness);
-          p5.line(0, closest.start, currX, closest.start);
-        }
-      } else if (isDrawingVertical) {
-        const closest = verticalLineXPositions.find(
-          (line) => p5.abs(line.start - pen.x) <= 80
-        );
-        if (closest) {
-          p5.strokeWeight(closest.thickness);
-          p5.line(closest.start, 0, closest.start, currY);
-        }
-      }
-      return false;
     };
 
     const initRects = function (): any[] {

@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet" />
   <link href="/src/styles.css" rel="stylesheet" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Abstract Art Canvas 👩‍🎨</title>
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -15,33 +15,16 @@
 </head>
 
 <body class="relative bg-[#f8f5f0] text-gray-900 antialiased min-h-screen overflow-x-hidden">
-  <div class="gallery-wall">
-    <img src="/img/albers.jpg" class="art art-1" />
-    <img src="/img/mondrian.jpg" class="art art-2" />
-    <img src="/img/rothko.jpg" class="art art-3" />
-    <img src="/img/kelly.jpg" class="art art-4" />
-    <img src="/img/albers.jpg" class="art art-5" />
-    <img src="/img/mondrian.jpg" class="art art-6" />
-    <img src="/img/rothko.jpg" class="art art-7" />
-    <img src="/img/kelly.jpg" class="art art-8" />
-  </div>
-
-  <section class="relative z-10 mx-auto max-w-screen-xl px-6 pt-12 pb-24">
-    <div class="flex justify-center mb-6">
-      <h1 class="text-6xl md:text-8xl font-title font-bold text-gray-900 tracking-tight">
-        Abstract Art Canvas 👩‍🎨
-      </h1>
-    </div>
-
-    <div class="font-body flex justify-center max-w-9/10 text-2xl/7 text-gray-700 text-center">
+  <main class="relative z-10 flex flex-col items-center px-6 pt-12 pb-18">
+    <h1 class="text-6xl md:text-8xl font-title font-black text-gray-900 tracking-tight text-center mb-6">
+      Abstract Art Canvas 👩‍🎨
+    </h1>
+    <p class="font-body text-2xl/7 text-gray-700 text-center mb-4 w-full max-w-screen-lg">
       You, too, can be a 20th century abstract artist for a day!
-    </div>
-    <div class="font-body flex justify-center max-w-9/10 text-2xl/7 text-gray-700 text-center">
       Tap, click, or drag to recreate the famous artwork below in the canvas on the right.
-    </div>
-
-    <div id="root"></div>
-  </section>
+    </p>
+    <div id="root" class="flex-grow w-full max-w-screen-lg"></div>
+  </main>
 
   <script type="module" src="/src/main.tsx"></script>
 </body>

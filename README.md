@@ -31,3 +31,10 @@ pnpm install        # install dependencies
 pnpm run dev
 ```
 Then open http://localhost:5173/ in a browser
+
+I use [localhost.run](https://localhost.run/) to open a tunnel to my mobile device for testing:
+
+```bash
+# In a separate bash terminal, I run:
+ssh -o ServerAliveInterval=60 -R 80:localhost:5173 localhost.run
+```

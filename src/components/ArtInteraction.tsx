@@ -23,15 +23,14 @@ export default function ArtInteraction({ artwork }: ArtInteractionProps) {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <div className="text-center text-xl font-semibold text-blue-700">
+      <div className="text-center text-xl font-semibold text-blue-700 px-4">
         {artwork.artworkTitle} — {artwork.artistName}, {artwork.year}
       </div>
 
-      <div className="flex flex-row gap-8 justify-center items-start">
+      <div className="flex flex-col md:flex-row justify-center gap-6 p-2 items-center">
         {/* Reference Image */}
         <div
-          className="border-4 border-gray-300 rounded-2xl shadow-md flex-1 overflow-hidden aspect-square"
-          style={{ width: CANVAS_SIZE, height: CANVAS_SIZE }}
+          className="border-4 border-gray-300 rounded-2xl shadow-md flex-1 overflow-hidden w-[min(90vw,400px)] aspect-square"
         >
           <img
             src={`/img/${artwork.image}`}
@@ -42,8 +41,7 @@ export default function ArtInteraction({ artwork }: ArtInteractionProps) {
 
         {/* P5.js Canvas */}
         <div
-          className="border-4 border-gray-300 rounded-2xl shadow-md flex-1 overflow-hidden aspect-square"
-          style={{ width: CANVAS_SIZE, height: CANVAS_SIZE }}
+          className="border-4 border-gray-300 rounded-2xl shadow-md flex-1 overflow-hidden w-[min(90vw,400px)] aspect-square"
         >
           <div
             ref={canvasRef}
