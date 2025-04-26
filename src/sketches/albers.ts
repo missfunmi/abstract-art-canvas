@@ -41,8 +41,6 @@ export function createSketch() {
   let dragPath: Point[] = [];
 
   return function sketch(p5: p5) {
-    p5.preload = function () {};
-
     p5.setup = function () {
       p5.createCanvas(canvasSize, canvasSize);
       allColorSets = initColorSets();
@@ -50,36 +48,16 @@ export function createSketch() {
       p5.background(activeColorSet[0].color);
     };
 
-    p5.draw = function () {};
-
-    p5.doubleClicked = function () {
-      // get random color from activeColorSet -- only move on if a new color set is returned
-      let previousColorSet = activeColorSet;
-      activeColorSet = p5.random(allColorSets);
-      while (previousColorSet[0].color == activeColorSet[0].color) {
-        activeColorSet = p5.random(allColorSets);
-      }
-
-      // then draw entire canvas with random selection of colors and set drawn = true for each one
-      for (const key in activeColorSet) {
-        let square = activeColorSet[key];
-        p5.noStroke();
-        p5.fill(square.color);
-        p5.rect(square.startX, square.startY, square.size);
-        square.isDrawn = true;
-      }
-
-      console.log("👀 activeColorSet: ", activeColorSet);
-
-      return false;
-    };
-
     p5.mousePressed = function () {
-      dragPath.push({
-        x: p5.mouseX,
-        y: p5.mouseY,
-      });
       activeSquare = activeColorSet.find((square) => !square.isDrawn);
+      if (!activeSquare) {
+        switchColorPalettes();
+      } else {
+        dragPath.push({
+          x: p5.mouseX,
+          y: p5.mouseY,
+        });
+      }
       return false;
     };
 
@@ -183,6 +161,46 @@ export function createSketch() {
         x: p5.mouseX,
         y: p5.mouseY,
       });
+      return false;
+    };
+
+    p5.touchStarted = function() {
+      p5.mousePressed();
+      return false;
+    }
+
+    p5.touchMoved = function() {
+      p5.mouseDragged();
+      return false;
+    }
+
+    p5.touchEnded = function() {
+      p5.mouseReleased();
+      return false;
+    }
+
+    const switchColorPalettes = function () {
+      // only activate after all squares are drawn
+      activeSquare = activeColorSet.find((square) => !square.isDrawn);
+      if (activeSquare) {
+        return false;
+      }
+      // get random color from activeColorSet -- only move on if a new color set is returned
+      let previousColorSet = activeColorSet;
+      activeColorSet = p5.random(allColorSets);
+      while (previousColorSet[0].color == activeColorSet[0].color) {
+        activeColorSet = p5.random(allColorSets);
+      }
+
+      // then draw entire canvas with random selection of colors and set drawn = true for each one
+      for (const key in activeColorSet) {
+        let square = activeColorSet[key];
+        p5.noStroke();
+        p5.fill(square.color);
+        p5.rect(square.startX, square.startY, square.size);
+        square.isDrawn = true;
+      }
+
       return false;
     };
 
