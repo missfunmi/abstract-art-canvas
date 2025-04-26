@@ -3,7 +3,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2fa22975-7994-4851-9049-bd026a72ef4b/deploy-status)](https://app.netlify.com/sites/abstract-art-canvas/deploys)
 
-You, too, can be a famous abstract artist for a day! Tap, click, or drag to recreate famous abstract artwork from the 20th century.
+You, too, can be a famous abstract artist for a day! Tap, click, or drag to recreate famous abstract artwork from the mid-20th century.
 
 > ⏳ This project is a **Work in Progress**.
 
@@ -12,8 +12,8 @@ You, too, can be a famous abstract artist for a day! Tap, click, or drag to recr
 ## Art pieces in the gallery
 | | Artist | Artwork | Year | Paint Style | User Interaction | p5js.org | codepen.io |
 |-|--------|---------|------|-------------|------------------|----------|-----------|
-|✅| Piet Mondrian | [Composition II in Red, Blue, and Yellow](https://www.wikiart.org/en/piet-mondrian/composition-with-red-blue-and-yellow-1930) | 1930 | De Stijl / Neoplasticism | Click and drag to draw the black grid lines, double-click to fill in the colors | [link](https://editor.p5js.org/missfunmi/sketches/hTcvq_5kc) | [link](https://codepen.io/missfunmi/pen/raaeLeX) |
-|✅| Josef Albers | [Homage to the Square](https://www.wikiart.org/en/josef-albers/all-works#!/%23filterName:Series_homage-to-the-square,resultType:masonry#filterName:Series_homage-to-the-square,resultType:masonry) | 1950 - 1976 | Abstract Color Study / Minimalism | Clik an drag to draw squares starting with the largest one, double-click to toggle palette | [link](https://editor.p5js.org/missfunmi/sketches/0LwZpwGOa) | [link](https://codepen.io/missfunmi/pen/wBBJXJE) |
+|✅| Josef Albers | [Homage to the Square](https://www.wikiart.org/en/josef-albers/all-works#!/%23filterName:Series_homage-to-the-square,resultType:masonry#filterName:Series_homage-to-the-square,resultType:masonry) | 1950 - 1976 | Abstract Color Study / Minimalism | Draw squares on the canvas, then tap to cycle through color palettes | [link](https://editor.p5js.org/missfunmi/sketches/0LwZpwGOa) | [link](https://codepen.io/missfunmi/pen/wBBJXJE) |
+|✅| Piet Mondrian | [Composition II in Red, Blue, and Yellow](https://www.wikiart.org/en/piet-mondrian/composition-with-red-blue-and-yellow-1930) | 1930 | De Stijl / Neoplasticism | Draw black grid lines, then tap to fill in the colors | [link](https://editor.p5js.org/missfunmi/sketches/hTcvq_5kc) | [link](https://codepen.io/missfunmi/pen/raaeLeX) |
 |👉| Mark Rothko | [Orange and Yellow](https://www.wikiart.org/en/mark-rothko/orange-and-yellow) | 1956 | Color Field Painting | Click or tap reveals subtle color transitions; fade between emotions with soft transitions | tbd | tbd |
 |⏳| Ellsworth Kelly | [Colors for a Large Wall](https://www.wikiart.org/en/ellsworth-kelly/colors-for-a-large-wall-1951) | 1951 | Hard-Edge Abstraction | Shuffle tiles or drag-and-drop to create new arrangements. | tbd | tbd |
 |⏳| Wassily Kandinsky | [Composition VIII](https://www.wikiart.org/en/wassily-kandinsky/composition-viii-1923) | 1923 | Abstract / Geometric Art | User clicks to add shapes and lines that play tones | tbd | tbd |
@@ -22,8 +22,8 @@ You, too, can be a famous abstract artist for a day! Tap, click, or drag to recr
 # Running the app locally
 ## First time install
 ```bash
-brew install pnpm  # uses Homebrew, if needed
-pnpm install
+brew install pnpm   # uses Homebrew to install pnpm, if needed
+pnpm install        # install dependencies
 ```
 
 ## To run the app,
