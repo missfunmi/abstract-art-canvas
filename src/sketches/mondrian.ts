@@ -1,15 +1,15 @@
 // Source image: https://www.piet-mondrian.org/composition-ii-in-red-blue-and-yellow.jsp
 
 import p5 from "p5";
-import { CANVAS_SIZE } from "../constants";
+import { CANVAS_SIZE_MOBILE } from "../constants";
 
-export function createSketch() {
+export function createSketch(size: number) {
   let mondrianBlack;
   let mondrianWhite;
 
-  let canvasSize = CANVAS_SIZE;
+  let canvasSize = size;
   let gridSize = 10;
-  let lineThickness = 10;
+  let lineThickness = size === CANVAS_SIZE_MOBILE ? 8 : 10;
 
   type Line = {
     start: number;
@@ -38,19 +38,39 @@ export function createSketch() {
       mondrianWhite = p5.color("#e6e6e6");
       p5.background(mondrianWhite);
       coloredRects = initRects();
+
+      // nextButton = p5.createButton("Next >>");
+      // // nextButton.style("background-color", "#333");
+      // // nextButton.style("color", "#fff");
+      // // nextButton.style("border-radius", "8px");
+      // // nextButton.style("padding", "10px 20px");
+      // nextButton.class("next-button");
+      // // nextButton.position(0,0);
+      // nextButton.position((2 * p5.width)+ 300, p5.height + 60);
+      // nextButton.mousePressed(handleNext);
+      // nextButton.touchEnded(handleNext);
+
+      // previousButton = p5.createButton("<< Prev");
+      // // previousButton.style("background-color", "#333");
+      // // previousButton.style("color", "#fff");
+      // // previousButton.style("border-radius", "8px");
+      // // previousButton.style("padding", "10px 20px");
+      // previousButton.position(p5.width / 2 - 75, p5.height + 60);
+      // previousButton.class("previous-button");
+      // previousButton.mousePressed(handlePrevious);
+      // previousButton.touchEnded(handlePrevious);
     };
 
     p5.doubleClicked = function () {
-      fillColoredRects();
+      colorRectInClickArea();
       return false;
-    }
+    };
 
     p5.mousePressed = function () {
       if (!pen.isDrawing) {
         pen.x = p5.mouseX;
         pen.y = p5.mouseY;
       }
-
       pen.isDrawing = true;
       if (pen.x <= 0 || pen.x >= canvasSize) {
         isDrawingHorizontal = true;
@@ -65,6 +85,7 @@ export function createSketch() {
     p5.mouseReleased = function () {
       // reset pen state when the mouse is released after dragging
       pen = { x: -1, y: -1, isDrawing: false };
+      return false;
     };
 
     p5.mouseDragged = function () {
@@ -93,23 +114,7 @@ export function createSketch() {
       return false;
     };
 
-    p5.touchStarted = function() {
-      p5.mousePressed();
-      return false;
-    }
-
-    p5.touchMoved = function() {
-      p5.mouseDragged();
-      return false;
-    }
-
-    p5.touchEnded = function() {
-      p5.mouseReleased();
-      fillColoredRects();
-      return false;
-    }
-
-    const fillColoredRects = function () {
+    const colorRectInClickArea = function () {
       let clickPoint = { x: p5.mouseX, y: p5.mouseY };
 
       coloredRects.forEach((coloredRect) => {
@@ -137,11 +142,14 @@ export function createSketch() {
         { start: (9 * canvasSize) / gridSize, thickness: lineThickness },
       ];
       horizontalLineYPositions = [
-        { start: (3 * canvasSize) / gridSize, thickness: 2 * lineThickness },
-        { start: (7 * canvasSize) / gridSize, thickness: lineThickness },
         {
-          start: (17 * canvasSize) / (2 * gridSize),
-          thickness: 2 * lineThickness,
+          start: (3.3 * canvasSize) / gridSize,
+          thickness: 1.3 * lineThickness,
+        },
+        { start: (7.3 * canvasSize) / gridSize, thickness: lineThickness },
+        {
+          start: (17.3 * canvasSize) / (2 * gridSize),
+          thickness: 1.3 * lineThickness,
         },
       ];
       let redRect: Rect = {

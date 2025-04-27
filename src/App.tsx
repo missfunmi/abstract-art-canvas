@@ -19,14 +19,15 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-8 p-8">
+    <div className="flex flex-col items-center gap-8 px-4 pt-4">
       <ArtInteraction artwork={artwork} />
 
-      <div className="flex gap-4">
+      <div className="flex gap-4 -m-2">
         {index > 0 && (
           <button
             onClick={handlePrevious}
-            className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+            id="previous-button"
+            className="px-4 py-1 bg-gray-200 rounded hover:bg-gray-300"
           >
             Previous
           </button>
@@ -34,7 +35,8 @@ function App() {
         {index < artworks.length - 1 && (
           <button
             onClick={handleNext}
-            className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800"
+            id="next-button"
+            className="px-4 py-1 bg-black text-white rounded hover:bg-gray-800"
           >
             Next
           </button>

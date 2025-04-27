@@ -15,6 +15,6 @@ export default defineConfig(({ command }) => ({
       : []),
   ],
   server: {
-    allowedHosts: ["a36eb3d78f21ed.lhr.life"],
+    allowedHosts: [],
   },
 }));

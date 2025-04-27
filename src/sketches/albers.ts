@@ -1,7 +1,7 @@
 // Source image: https://www.incollect.com/listings/fine-art/prints/josef-albers-original-homage-to-the-square-serigraphs-by-josef-albers-417718
 
 import p5 from "p5";
-import { CANVAS_SIZE } from "../constants";
+import { CANVAS_SIZE_MOBILE } from "../constants";
 
 /**
  *  ----------------------------
@@ -17,10 +17,10 @@ import { CANVAS_SIZE } from "../constants";
  * |   ----------------------   |
  *  ----------------------------
  */
-export function createSketch() {
-  let canvasSize = CANVAS_SIZE;
+export function createSketch(size: number) {
+  let canvasSize = size;
   let gridSize = 10;
-  let yOffset = 60;
+  let yOffset = size === CANVAS_SIZE_MOBILE ? 35 : 60;
 
   type Square = {
     startX: number;
@@ -125,6 +125,8 @@ export function createSketch() {
 
           activeSquare.isDrawn = true;
         } else {
+          console.log("❌ that was not a square, # of corners:", corners);
+
           // redraw everything that was drawn already to replace the line the user drew
           for (const key in activeColorSet) {
             let square = activeColorSet[key];
@@ -163,21 +165,6 @@ export function createSketch() {
       });
       return false;
     };
-
-    p5.touchStarted = function() {
-      p5.mousePressed();
-      return false;
-    }
-
-    p5.touchMoved = function() {
-      p5.mouseDragged();
-      return false;
-    }
-
-    p5.touchEnded = function() {
-      p5.mouseReleased();
-      return false;
-    }
 
     const switchColorPalettes = function () {
       // only activate after all squares are drawn

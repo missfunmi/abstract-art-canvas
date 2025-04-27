@@ -1,15 +1,25 @@
 import p5 from "p5";
 
 export interface Artwork {
-  id: string; // used for filename/sketch file
+  id: string;
   artistName: string;
   artworkTitle: string;
   year: string;
-  image: string; // image file name
-  sketchFile: () => Promise<{ createSketch: () => (p: p5) => void }>;
+  image: string;
+  sketchFile: () => Promise<{
+    createSketch: (size: number) => (p5: p5) => void;
+  }>;
 }
 
 export const artworks: Artwork[] = [
+  {
+    id: "mondrian",
+    artistName: "Piet Mondrian",
+    artworkTitle: "Composition with Red, Blue, and Yellow",
+    year: "1930",
+    image: "mondrian.jpg",
+    sketchFile: () => import("./sketches/mondrian"),
+  },
   {
     id: "albers",
     artistName: "Josef Albers",
@@ -19,11 +29,11 @@ export const artworks: Artwork[] = [
     sketchFile: () => import("./sketches/albers"),
   },
   {
-    id: "mondrian",
-    artistName: "Piet Mondrian",
-    artworkTitle: "Composition II with Red, Blue, and Yellow",
-    year: "1930",
-    image: "mondrian.jpg",
-    sketchFile: () => import("./sketches/mondrian"),
-  }
-]
+    id: "rothko",
+    artistName: "Mark Rothko",
+    artworkTitle: "Orange and Yellow",
+    year: "1956",
+    image: "rothko.jpg",
+    sketchFile: () => import("./sketches/rothko"),
+  },
+];

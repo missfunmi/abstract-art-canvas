@@ -3,7 +3,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2fa22975-7994-4851-9049-bd026a72ef4b/deploy-status)](https://app.netlify.com/sites/abstract-art-canvas/deploys)
 
-You, too, can be a famous abstract artist for a day! Tap, click, or drag to recreate famous abstract artwork from the mid-20th century.
+You, too, can be a 20th century abstract artist for a day! Tap, click, or drag to recreate famous abstract artwork from the mid-20th century.
 
 > ⏳ This project is a **Work in Progress**.
 
